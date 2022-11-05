@@ -12,7 +12,7 @@ cursor = connection.cursor()
 class StartTestWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi("start_test.ui", self)
+        uic.loadUi("UI/start_test.ui", self)
         self.start_test_btn.clicked.connect(self.start_test)
         self.setWindowTitle("Тест")
         self.setFixedSize(279, 191)
@@ -29,7 +29,7 @@ class StartTestWindow(QMainWindow):
 class QuestionView(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi("question.ui", self)
+        uic.loadUi("UI/question.ui", self)
         self.setFixedSize(489, 262)
         self.ans_btn.clicked.connect(self.answer)
         self.next_btn.clicked.connect(lambda: self.change_question(1))
