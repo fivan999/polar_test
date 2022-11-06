@@ -44,7 +44,7 @@ class QuestionView(QWidget):
 
     def make_question(self):
         self.ans_1.setChecked(True)
-        self.setWindowTitle(f"Вопрос {self.cur_ind + 1}")
+        self.setWindowTitle(f"Вопрос {self.all_questions[self.cur_ind][0]}")
         answers = self.all_questions[self.cur_ind][2:6]
         self.cur_ans = answers[0]
         self.right = self.all_questions[self.cur_ind][-1]

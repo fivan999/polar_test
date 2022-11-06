@@ -3,7 +3,7 @@ It is an application on PyQt created in about an hour. Contains interesting ques
 ## Installation
 ```
 git clone https://github.com/fivan999/polar_test
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 ## Usage
 ```
