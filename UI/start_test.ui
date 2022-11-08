@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>279</width>
-    <height>191</height>
+    <width>1010</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,21 +17,88 @@
    <widget class="QPushButton" name="start_test_btn">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>50</y>
-      <width>151</width>
-      <height>81</height>
+      <x>590</x>
+      <y>330</y>
+      <width>181</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>18</pointsize>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #FF3A21; 
+color: white;
+transition-duration: 500ms; 
+cursor: pointer; 
+border-radius: 15px;
+</string>
+    </property>
     <property name="text">
-     <string>Начать тест</string>
+     <string>Начать</string>
     </property>
    </widget>
+   <widget class="QLabel" name="background_image">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1011</width>
+      <height>501</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lvl_image">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>110</y>
+      <width>160</width>
+      <height>95</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>230</y>
+      <width>231</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF;
+font-size: 12px;
+font-family: Atom400, Arial;
+</string>
+    </property>
+    <property name="text">
+     <string>Данный тест содержит все вопросы из базы данных. Вы можете тренироваться, пока не устанете. Успехов в подготовке!</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <zorder>background_image</zorder>
+   <zorder>start_test_btn</zorder>
+   <zorder>lvl_image</zorder>
+   <zorder>label</zorder>
   </widget>
  </widget>
  <resources/>

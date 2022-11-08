@@ -1,4 +1,6 @@
 from random import shuffle
+
+from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QWidget, QMainWindow, QApplication, QMessageBox
 from PyQt5 import uic
 import sys
@@ -13,9 +15,18 @@ class StartTestWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi("UI/start_test.ui", self)
+        self.initUI()
+
+    def initUI(self):
         self.start_test_btn.clicked.connect(self.start_test)
-        self.setWindowTitle("Тест")
-        self.setFixedSize(279, 191)
+        self.setWindowTitle("Ледокол знаний")
+        self.setFixedSize(1010, 500)
+        self.back_img = QPixmap("media/background-icecutter.jpeg")
+        self.back_img = self.back_img.scaled(1011, 501)
+        self.lvl5_img = QPixmap("media/lvl5.png")
+        self.lvl5_img = self.lvl5_img.scaled(160, 95)
+        self.background_image.setPixmap(self.back_img)
+        self.lvl_image.setPixmap(self.lvl5_img)
 
     def start_test(self):
         self.result = 0
