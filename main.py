@@ -1,5 +1,4 @@
 from random import shuffle
-
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QWidget, QMainWindow, QApplication, QMessageBox
 from PyQt5 import uic
@@ -41,11 +40,8 @@ class QuestionView(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("UI/question.ui", self)
-        self.setFixedSize(489, 262)
-        self.ans_btn.clicked.connect(self.answer)
+        self.setFixedSize(848, 471)
         self.next_btn.clicked.connect(lambda: self.change_question(1))
-        self.back_btn.clicked.connect(lambda: self.change_question(-1))
-        self.end_test_btn.clicked.connect(self.end_test)
 
     def fill(self, all_questions):
         self.cur_ind = 0
@@ -54,37 +50,53 @@ class QuestionView(QWidget):
         self.make_question()
 
     def make_question(self):
-        self.ans_1.setChecked(True)
         self.setWindowTitle(f"Вопрос {self.all_questions[self.cur_ind][0]}")
         answers = self.all_questions[self.cur_ind][2:6]
-        self.cur_ans = answers[0]
         self.right = self.all_questions[self.cur_ind][-1]
         self.question_text.setText(self.all_questions[self.cur_ind][1])
         btn_id = 0
         for btn in self.ans_group.buttons():
-            btn.setStyleSheet("")
+            btn.setStyleSheet("""border: 1px solid white; 
+                                 padding: 20px 40px 20px 40px; 
+                                 width: calc(100% - 80px); 
+                                 cursor: pointer; 
+                                 background-color: #025EA1; 
+                                 color: white;
+                                 text-align: left;
+                                 """)
             btn.setText(answers[btn_id])
-            btn.clicked.connect(self.set_answer)
+            btn.clicked.connect(self.answer)
             btn_id += 1
 
-    def set_answer(self):
-        self.cur_ans = self.sender().text()
-
     def answer(self):
-        self.ans_btn.setEnabled(True)
-        if self.cur_ans:
+        cur_ans = self.sender().text()
+        if cur_ans:
             for btn in self.ans_group.buttons():
-                if self.cur_ans == btn.text() and self.cur_ans != self.right:
-                    btn.setStyleSheet("color: red")
+                if cur_ans == btn.text() and cur_ans != self.right:
+                    btn.setStyleSheet("""border: 1px solid red; 
+                                         padding: 20px 40px 20px 40px; 
+                                         width: calc(100% - 80px); 
+                                         cursor: pointer; 
+                                         background-color: red; 
+                                         color: white;
+                                         text-align: left;
+                                         """)
                 elif btn.text() == self.right:
-                    btn.setStyleSheet("color: green")
+                    btn.setStyleSheet("""border: 1px solid #6CACE4; 
+                                         padding: 20px 40px 20px 40px; 
+                                         width: calc(100% - 80px); 
+                                         cursor: pointer; 
+                                         background-color: #6CACE4;
+                                         color: white;
+                                         text-align: left;
+                                         """)
 
     def change_question(self, val):
         self.cur_ind += val
         if not 0 <= self.cur_ind <= len(self.all_questions) - 1:
             self.cur_ind -= val
-            QMessageBox.question(self, "Ошибка",
-                                 "Там нет вопросов", QMessageBox.Ok)
+            QMessageBox.warning(self, "Конец",
+                                "Больше вопросов нет", QMessageBox.Ok)
             return
         self.make_question()
 
