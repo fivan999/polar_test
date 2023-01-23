@@ -20,9 +20,9 @@ class StartTestWindow(QMainWindow):
         self.start_test_btn.clicked.connect(self.start_test)
         self.setWindowTitle("Ледокол знаний")
         self.setFixedSize(1010, 500)
-        self.back_img = QPixmap("media/background-icecutter.jpeg")
+        self.back_img = QPixmap("image/background-icecutter.jpeg")
         self.back_img = self.back_img.scaled(1011, 501)
-        self.lvl5_img = QPixmap("media/lvl5.png")
+        self.lvl5_img = QPixmap("image/lvl5.png")
         self.lvl5_img = self.lvl5_img.scaled(160, 95)
         self.background_image.setPixmap(self.back_img)
         self.lvl_image.setPixmap(self.lvl5_img)
@@ -49,10 +49,16 @@ class QuestionView(QWidget):
         shuffle(self.all_questions)
         self.make_question()
 
+    def set_question(self, path):
+        pixmap = QPixmap(path)
+        pixmap.scaled(391, 261)
+        self.image.setPixmap(pixmap)
+
     def make_question(self):
         self.setWindowTitle(f"Вопрос {self.all_questions[self.cur_ind][0]}")
+        self.set_question(self.all_questions[self.cur_ind][7])
         answers = self.all_questions[self.cur_ind][2:6]
-        self.right = self.all_questions[self.cur_ind][-1]
+        self.right = self.all_questions[self.cur_ind][6]
         self.question_text.setText(self.all_questions[self.cur_ind][1])
         btn_id = 0
         for btn in self.ans_group.buttons():

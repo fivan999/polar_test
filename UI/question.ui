@@ -190,6 +190,9 @@ border-radius: 17px;
    <property name="text">
     <string/>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
   <widget class="QLabel" name="question_text">
    <property name="geometry">
@@ -221,6 +224,13 @@ border-radius: 17px;
     <bool>true</bool>
    </property>
   </widget>
+  <zorder>ans_1</zorder>
+  <zorder>ans_2</zorder>
+  <zorder>ans_3</zorder>
+  <zorder>ans_4</zorder>
+  <zorder>next_btn</zorder>
+  <zorder>question_text</zorder>
+  <zorder>image</zorder>
  </widget>
  <resources/>
  <connections/>
